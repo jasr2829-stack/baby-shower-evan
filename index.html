@@ -1,12 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Baby Shower de Evan Ariel</title>
+<title>Baby Shower Evan Ariel</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,58 +18,67 @@ box-sizing:border-box;
 }
 
 body{
-font-family:'Poppins',sans-serif;
-background:#f8f8f8;
-color:#333;
+font-family:'Fredoka',sans-serif;
+background:#f7f4ea;
 overflow-x:hidden;
+color:#333;
 }
 
 .hero{
-height:100vh;
-background:url('https://images.unsplash.com/photo-1519682577862-22b62b24e493?q=80&w=1920') center center/cover;
+min-height:100vh;
+background:linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,.75)),
+url("https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920");
+background-size:cover;
+background-position:center;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 text-align:center;
-position:relative;
-}
-
-.hero::before{
-content:'';
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(255,255,255,.75);
+padding:30px;
 }
 
 .hero-content{
-position:relative;
-z-index:2;
-padding:20px;
+max-width:1000px;
 }
 
 .hero h1{
-font-family:'Cormorant Garamond',serif;
 font-size:5rem;
-color:#365f96;
-margin-bottom:20px;
+color:#4d7c3f;
+margin-bottom:15px;
+}
+
+.hero h2{
+font-size:2rem;
+color:#7ea35c;
+margin-bottom:25px;
 }
 
 .hero p{
 font-size:1.3rem;
-max-width:800px;
-margin:auto;
+line-height:1.8;
+}
+
+.dinos{
+font-size:4rem;
+margin:25px 0;
+animation:flotar 3s infinite ease-in-out;
+}
+
+@keyframes flotar{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
 }
 
 .btn{
 display:inline-block;
 margin-top:30px;
-padding:15px 35px;
-background:#5d8fd6;
+background:#6ea54c;
 color:white;
+padding:18px 35px;
+border-radius:50px;
 text-decoration:none;
-border-radius:40px;
-font-weight:600;
+font-size:1.1rem;
+font-weight:bold;
 }
 
 section{
@@ -76,24 +86,24 @@ padding:90px 10%;
 text-align:center;
 }
 
-h2{
-font-family:'Cormorant Garamond',serif;
-font-size:4rem;
-color:#365f96;
+.titulo{
+font-size:3.5rem;
+color:#4d7c3f;
 margin-bottom:30px;
 }
 
-.text{
-max-width:900px;
-margin:auto;
+.texto{
 font-size:1.2rem;
 line-height:2;
+max-width:900px;
+margin:auto;
 }
 
-.parents{
+.padres{
 margin-top:40px;
 font-size:1.5rem;
 line-height:2;
+font-weight:600;
 }
 
 .gallery{
@@ -107,23 +117,29 @@ margin-top:50px;
 width:100%;
 height:450px;
 object-fit:cover;
-border-radius:20px;
-box-shadow:0 8px 20px rgba(0,0,0,.15);
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+transition:.4s;
 }
 
-.dino{
-margin-top:60px;
-width:250px;
+.gallery img:hover{
+transform:scale(1.03);
+}
+
+.decoracion{
+font-size:4rem;
+margin:30px 0;
 }
 
 footer{
-background:white;
+background:#e9f3df;
 padding:80px 20px;
 text-align:center;
 }
 
 footer h2{
 font-size:3rem;
+color:#4d7c3f;
 margin-bottom:20px;
 }
 
@@ -138,17 +154,17 @@ line-height:2;
 position:fixed;
 bottom:20px;
 right:20px;
-z-index:1000;
+z-index:999;
 }
 
 .music a{
-text-decoration:none;
 background:white;
 padding:15px 25px;
 border-radius:50px;
+text-decoration:none;
 box-shadow:0 5px 15px rgba(0,0,0,.2);
 color:#333;
-font-weight:600;
+font-weight:bold;
 }
 
 @media(max-width:768px){
@@ -157,18 +173,21 @@ font-weight:600;
 font-size:3rem;
 }
 
-h2{
-font-size:2.7rem;
+.hero h2{
+font-size:1.5rem;
+}
+
+.titulo{
+font-size:2.3rem;
 }
 
 .gallery img{
-height:350px;
+height:320px;
 }
 
 }
 
 </style>
-
 </head>
 
 <body>
@@ -177,13 +196,19 @@ height:350px;
 
 <div class="hero-content">
 
-<h1>Baby Shower de Evan Ariel</h1>
+<div class="dinos">
+🦕 🌿 🥚 🦖
+</div>
+
+<h1>Baby Shower</h1>
+
+<h2>Evan Ariel</h2>
 
 <p>
-"Hay historias que comienzan con un latido, crecen con amor y se convierten en la aventura más hermosa de la vida."
+"Hay aventuras que comienzan con una pequeña huella y crecen hasta convertirse en algo extraordinario."
 </p>
 
-<a href="#invitacion" class="btn">
+<a href="#info" class="btn">
 Abrir Invitación
 </a>
 
@@ -191,11 +216,17 @@ Abrir Invitación
 
 </section>
 
-<section id="invitacion">
+<section id="info">
 
-<h2>Bienvenido Evan Ariel</h2>
+<div class="decoracion">
+🦕 🌿 🦖
+</div>
 
-<div class="text">
+<h2 class="titulo">
+Nuestro Pequeño Dinosaurio Está en Camino
+</h2>
+
+<div class="texto">
 
 Con inmensa felicidad esperamos la llegada de nuestro pequeño
 <strong>Evan Ariel</strong>.
@@ -204,7 +235,7 @@ Queremos compartir contigo este momento tan especial y celebrar juntos la alegr�
 
 </div>
 
-<div class="parents">
+<div class="padres">
 
 Miriam Nohemi Trinidad Rendón
 
@@ -222,17 +253,20 @@ Jorge Alberto Soto Rangel
 
 <section>
 
-<h2>Nuestra Dulce Espera</h2>
+<div class="decoracion">
+🥚 🌿 🦕 🌿 🥚
+</div>
+
+<h2 class="titulo">
+Nuestra Dulce Espera
+</h2>
 
 <div class="gallery">
 
-<img src="miriam1.jpg" alt="Foto 1">
-
-<img src="miriam2.jpg" alt="Foto 2">
-
-<img src="eco1.jpg" alt="Foto 3">
-
-<img src="eco2.jpg" alt="Foto 4">
+<img src="miriam1.jpg">
+<img src="miriam2.jpg">
+<img src="eco1.jpg">
+<img src="eco2.jpg">
 
 </div>
 
@@ -240,18 +274,28 @@ Jorge Alberto Soto Rangel
 
 <section>
 
-<h2>Un Pequeño Aventurero Está en Camino</h2>
+<div class="decoracion">
+🦖 🦕 🌴 🦖 🦕
+</div>
 
-<img
-class="dino"
-src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png"
-alt="Dinosaurio">
+<h2 class="titulo">
+Evan Ariel
+</h2>
+
+<p class="texto">
+
+Muy pronto llegará para llenar nuestros días de amor,
+aventuras y momentos inolvidables.
+
+</p>
 
 </section>
 
 <footer>
 
-<h2>Gracias por acompañarnos</h2>
+<h2>
+Gracias por acompañarnos
+</h2>
 
 <p>
 
@@ -259,7 +303,7 @@ Tu presencia hará aún más especial este día.
 
 <br><br>
 
-Gracias por acompañarnos en la dulce espera de nuestro pequeño Evan Ariel.
+Gracias por compartir con nosotros la dulce espera de Evan Ariel.
 
 <br><br>
 
@@ -287,3 +331,4 @@ Jorge Alberto Soto Rangel
 
 </body>
 </html>
+```
