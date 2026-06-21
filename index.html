@@ -16,162 +16,155 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 font-family:'Poppins',sans-serif;
-background:#f8fbff;
-color:#334;
+background:#f8f8f8;
+color:#333;
 overflow-x:hidden;
 }
 
 .hero{
 height:100vh;
-background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)),
-url('https://images.unsplash.com/photo-1519682577862-22b62b24e493');
-background-size:cover;
-background-position:center;
+background:url('https://images.unsplash.com/photo-1519682577862-22b62b24e493?q=80&w=1920') center center/cover;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
-padding:20px;
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(255,255,255,.75);
 }
 
 .hero-content{
-max-width:700px;
+position:relative;
+z-index:2;
+padding:20px;
 }
 
 .hero h1{
 font-family:'Cormorant Garamond',serif;
-font-size:4rem;
-color:#2f5d8c;
+font-size:5rem;
+color:#365f96;
+margin-bottom:20px;
 }
 
 .hero p{
-font-size:1.2rem;
-margin:25px 0;
-line-height:1.8;
+font-size:1.3rem;
+max-width:800px;
+margin:auto;
 }
 
 .btn{
 display:inline-block;
+margin-top:30px;
 padding:15px 35px;
-border-radius:50px;
-background:#5c8ec9;
+background:#5d8fd6;
 color:white;
 text-decoration:none;
+border-radius:40px;
 font-weight:600;
-transition:.3s;
-}
-
-.btn:hover{
-transform:scale(1.05);
 }
 
 section{
-padding:80px 20px;
-max-width:1100px;
-margin:auto;
+padding:90px 10%;
+text-align:center;
 }
 
-.section-title{
+h2{
 font-family:'Cormorant Garamond',serif;
-font-size:3rem;
-text-align:center;
-margin-bottom:50px;
-color:#2f5d8c;
+font-size:4rem;
+color:#365f96;
+margin-bottom:30px;
+}
+
+.text{
+max-width:900px;
+margin:auto;
+font-size:1.2rem;
+line-height:2;
+}
+
+.parents{
+margin-top:40px;
+font-size:1.5rem;
+line-height:2;
 }
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+margin-top:50px;
 }
 
 .gallery img{
 width:100%;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-}
-
-.message{
-max-width:800px;
-margin:auto;
-text-align:center;
-line-height:2;
-font-size:1.1rem;
-}
-
-.countdown{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-margin-top:30px;
-}
-
-.box{
-background:white;
-padding:20px;
+height:450px;
+object-fit:cover;
 border-radius:20px;
-width:110px;
-box-shadow:0 5px 20px rgba(0,0,0,.1);
+box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
 
-.box span{
-display:block;
-font-size:2rem;
-font-weight:bold;
-color:#2f5d8c;
-}
-
-.buttons{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
-margin-top:40px;
-}
-
-.action{
-padding:18px 28px;
-border-radius:50px;
-text-decoration:none;
-font-weight:600;
-background:#5c8ec9;
-color:white;
+.dino{
+margin-top:60px;
+width:250px;
 }
 
 footer{
+background:white;
 padding:80px 20px;
 text-align:center;
-background:#edf5ff;
 }
 
 footer h2{
-font-family:'Cormorant Garamond',serif;
 font-size:3rem;
-color:#2f5d8c;
 margin-bottom:20px;
+}
+
+footer p{
+max-width:800px;
+margin:auto;
+font-size:1.2rem;
+line-height:2;
 }
 
 .music{
 position:fixed;
 bottom:20px;
 right:20px;
-z-index:999;
+z-index:1000;
 }
 
 .music a{
-background:white;
-padding:15px 20px;
-border-radius:50px;
 text-decoration:none;
-box-shadow:0 5px 15px rgba(0,0,0,.15);
+background:white;
+padding:15px 25px;
+border-radius:50px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
 color:#333;
+font-weight:600;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:3rem;
+}
+
+h2{
+font-size:2.7rem;
+}
+
+.gallery img{
+height:350px;
+}
+
 }
 
 </style>
@@ -187,84 +180,41 @@ color:#333;
 <h1>Baby Shower de Evan Ariel</h1>
 
 <p>
-
-"Hay historias que comienzan con un latido,
-crecen con amor y se convierten en la aventura más hermosa de la vida."
-
+"Hay historias que comienzan con un latido, crecen con amor y se convierten en la aventura más hermosa de la vida."
 </p>
 
-<a href="#bienvenida" class="btn">Abrir Invitación</a>
+<a href="#invitacion" class="btn">
+Abrir Invitación
+</a>
 
 </div>
 
 </section>
 
-<section id="bienvenida">
+<section id="invitacion">
 
-<h2 class="section-title">Bienvenido Evan Ariel</h2>
+<h2>Bienvenido Evan Ariel</h2>
 
-<div class="message">
-
-<p>
+<div class="text">
 
 Con inmensa felicidad esperamos la llegada de nuestro pequeño
 <strong>Evan Ariel</strong>.
 
-Queremos compartir contigo este momento tan especial y celebrar juntos
-la alegría de su próxima llegada.
+Queremos compartir contigo este momento tan especial y celebrar juntos la alegría de su próxima llegada.
 
-</p>
+</div>
 
-<br>
-
-<p>
+<div class="parents">
 
 Miriam Nohemi Trinidad Rendón
-<br>
-&
-<br>
-Jorge Alberto Soto Rangel
-
-</p>
-
-</div>
-
-</section>
-
-<section>
-
-<h2 class="section-title">Nuestra Dulce Espera</h2>
-
-<div class="gallery">
-
-<img src="img/miriam1.jpg">
-<img src="img/miriam2.jpg">
-
-</div>
-
-</section>
-
-<section>
-
-<h2 class="section-title">Conociendo a Evan Ariel</h2>
-
-<div class="gallery">
-
-<img src="img/eco1.jpg">
-<img src="img/eco2.jpg">
-
-</div>
-
-<div class="message" style="margin-top:40px;">
-
-Aunque aún no podemos abrazarte,
-ya eres el centro de nuestros sueños
-y el motivo de nuestras sonrisas.
 
 <br><br>
 
-Te esperamos con todo nuestro amor,
-Evan Ariel.
+&
+
+<br><br>
+
+Jorge Alberto Soto Rangel
 
 </div>
 
@@ -272,29 +222,17 @@ Evan Ariel.
 
 <section>
 
-<h2 class="section-title">Cuenta Regresiva</h2>
+<h2>Nuestra Dulce Espera</h2>
 
-<div class="countdown">
+<div class="gallery">
 
-<div class="box">
-<span id="days">0</span>
-Días
-</div>
+<img src="miriam1.jpg" alt="Foto 1">
 
-<div class="box">
-<span id="hours">0</span>
-Horas
-</div>
+<img src="miriam2.jpg" alt="Foto 2">
 
-<div class="box">
-<span id="minutes">0</span>
-Minutos
-</div>
+<img src="eco1.jpg" alt="Foto 3">
 
-<div class="box">
-<span id="seconds">0</span>
-Segundos
-</div>
+<img src="eco2.jpg" alt="Foto 4">
 
 </div>
 
@@ -302,38 +240,12 @@ Segundos
 
 <section>
 
-<h2 class="section-title">Acompáñanos</h2>
+<h2>Un Pequeño Aventurero Está en Camino</h2>
 
-<div class="message">
-
-📅 01 de Agosto de 2026
-
-</div>
-
-<div class="buttons">
-
-<a
-class="action"
-href="https://maps.app.goo.gl/MpjE6jE5v3NpXkea7"
-target="_blank">
-📍 Cómo llegar
-</a>
-
-<a
-class="action"
-href="https://wa.me/525529050429?text=Hola%20confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Evan%20Ariel%20%F0%9F%A6%95%F0%9F%92%99"
-target="_blank">
-📲 Confirmar asistencia
-</a>
-
-<a
-class="action"
-href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52025896"
-target="_blank">
-🎁 Mesa de Regalos
-</a>
-
-</div>
+<img
+class="dino"
+src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png"
+alt="Dinosaurio">
 
 </section>
 
@@ -347,8 +259,7 @@ Tu presencia hará aún más especial este día.
 
 <br><br>
 
-Gracias por acompañarnos en la dulce espera
-de nuestro pequeño Evan Ariel.
+Gracias por acompañarnos en la dulce espera de nuestro pequeño Evan Ariel.
 
 <br><br>
 
@@ -373,32 +284,6 @@ Jorge Alberto Soto Rangel
 </a>
 
 </div>
-
-<script>
-
-const countDownDate = new Date("Aug 01, 2026 00:00:00").getTime();
-
-setInterval(function(){
-
-const now = new Date().getTime();
-
-const distance = countDownDate - now;
-
-document.getElementById("days").innerHTML =
-Math.floor(distance/(1000*60*60*24));
-
-document.getElementById("hours").innerHTML =
-Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-
-document.getElementById("minutes").innerHTML =
-Math.floor((distance%(1000*60*60))/(1000*60));
-
-document.getElementById("seconds").innerHTML =
-Math.floor((distance%(1000*60))/1000);
-
-},1000);
-
-</script>
 
 </body>
 </html>
