@@ -582,10 +582,194 @@ section:nth-of-type(even){
     bottom:10px;
   }
 }
+
+/* FONDO CON DINOSAURIOS ANIMADOS AZUL PASTEL */
+.animated-bg{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:-2;
+}
+
+.bg-bubble{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,.45);
+  border:1px solid rgba(167,216,255,.45);
+  animation:bubbleFloat 12s ease-in-out infinite;
+}
+
+.bg-bubble.b1{width:95px;height:95px;left:8%;top:18%;animation-delay:0s;}
+.bg-bubble.b2{width:140px;height:140px;right:8%;top:42%;animation-delay:2s;}
+.bg-bubble.b3{width:75px;height:75px;left:16%;bottom:12%;animation-delay:4s;}
+.bg-bubble.b4{width:115px;height:115px;right:22%;bottom:18%;animation-delay:6s;}
+
+@keyframes bubbleFloat{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-26px) scale(1.05);}
+}
+
+.bg-dino{
+  position:absolute;
+  width:120px;
+  opacity:.20;
+  filter:drop-shadow(0 10px 16px rgba(47,121,189,.14));
+}
+
+.bg-dino svg{
+  width:100%;
+  height:auto;
+}
+
+.bg-dino.one{
+  top:12%;
+  left:-160px;
+  animation:dinoWalkRight 28s linear infinite;
+}
+
+.bg-dino.two{
+  top:55%;
+  right:-170px;
+  transform:scaleX(-1);
+  animation:dinoWalkLeft 34s linear infinite;
+  animation-delay:4s;
+}
+
+.bg-dino.three{
+  bottom:7%;
+  left:-150px;
+  width:95px;
+  animation:dinoWalkRight 38s linear infinite;
+  animation-delay:9s;
+}
+
+.bg-dino.four{
+  top:30%;
+  right:-130px;
+  width:85px;
+  transform:scaleX(-1);
+  animation:dinoWalkLeft 42s linear infinite;
+  animation-delay:14s;
+}
+
+@keyframes dinoWalkRight{
+  0%{transform:translateX(0) translateY(0) rotate(-2deg);}
+  25%{transform:translateX(30vw) translateY(-12px) rotate(2deg);}
+  50%{transform:translateX(60vw) translateY(0) rotate(-1deg);}
+  75%{transform:translateX(90vw) translateY(-10px) rotate(2deg);}
+  100%{transform:translateX(calc(100vw + 260px)) translateY(0) rotate(-2deg);}
+}
+
+@keyframes dinoWalkLeft{
+  0%{transform:scaleX(-1) translateX(0) translateY(0) rotate(2deg);}
+  25%{transform:scaleX(-1) translateX(30vw) translateY(-10px) rotate(-2deg);}
+  50%{transform:scaleX(-1) translateX(60vw) translateY(0) rotate(1deg);}
+  75%{transform:scaleX(-1) translateX(90vw) translateY(-12px) rotate(-2deg);}
+  100%{transform:scaleX(-1) translateX(calc(100vw + 260px)) translateY(0) rotate(2deg);}
+}
+
+.bg-footprints{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.16;
+  background-image:
+    radial-gradient(ellipse at center, #2f79bd 0 18%, transparent 20%),
+    radial-gradient(ellipse at center, #2f79bd 0 18%, transparent 20%);
+  background-size:120px 120px;
+  background-position:20px 40px, 72px 92px;
+  transform:rotate(-18deg);
+  animation:printsMove 32s linear infinite;
+}
+
+@keyframes printsMove{
+  from{background-position:20px 40px,72px 92px;}
+  to{background-position:260px 280px,312px 332px;}
+}
+
+@media(max-width:640px){
+  .bg-dino{width:86px;opacity:.18;}
+  .bg-dino.two{width:96px;}
+  .bg-dino.three{width:72px;}
+  .bg-dino.four{width:64px;}
+  .bg-footprints{opacity:.10;}
+}
+
 </style>
 </head>
 
 <body>
+
+
+<!-- FONDO ANIMADO CON DINOSAURIOS AZUL PASTEL -->
+<div class="animated-bg" aria-hidden="true">
+  <div class="bg-bubble b1"></div>
+  <div class="bg-bubble b2"></div>
+  <div class="bg-bubble b3"></div>
+  <div class="bg-bubble b4"></div>
+
+  <div class="bg-dino one">
+    <svg viewBox="0 0 520 330" xmlns="http://www.w3.org/2000/svg">
+      <path d="M105 210 C60 200,40 174,42 150 C76 168,102 166,128 150 Z" fill="#6bbef2"/>
+      <ellipse cx="260" cy="205" rx="145" ry="82" fill="#8fd0ff"/>
+      <path d="M355 155 C395 112,441 104,467 130 C493 158,478 201,430 202 C391 203,366 180,355 155Z" fill="#8fd0ff"/>
+      <circle cx="440" cy="145" r="7" fill="#173b5d"/>
+      <path d="M188 132 C195 92,229 75,257 103 C274 120,272 153,254 173" fill="#8fd0ff"/>
+      <circle cx="245" cy="105" r="6" fill="#173b5d"/>
+      <path d="M173 279 L197 279 L208 232 L178 232Z" fill="#62b7ee"/>
+      <path d="M283 279 L308 279 L315 232 L285 232Z" fill="#62b7ee"/>
+      <circle cx="226" cy="185" r="13" fill="#d8f0ff"/>
+      <circle cx="275" cy="170" r="12" fill="#d8f0ff"/>
+      <circle cx="318" cy="198" r="10" fill="#d8f0ff"/>
+    </svg>
+  </div>
+
+  <div class="bg-dino two">
+    <svg viewBox="0 0 520 330" xmlns="http://www.w3.org/2000/svg">
+      <path d="M105 210 C60 200,40 174,42 150 C76 168,102 166,128 150 Z" fill="#6bbef2"/>
+      <ellipse cx="260" cy="205" rx="145" ry="82" fill="#8fd0ff"/>
+      <path d="M355 155 C395 112,441 104,467 130 C493 158,478 201,430 202 C391 203,366 180,355 155Z" fill="#8fd0ff"/>
+      <circle cx="440" cy="145" r="7" fill="#173b5d"/>
+      <path d="M188 132 C195 92,229 75,257 103 C274 120,272 153,254 173" fill="#8fd0ff"/>
+      <circle cx="245" cy="105" r="6" fill="#173b5d"/>
+      <path d="M173 279 L197 279 L208 232 L178 232Z" fill="#62b7ee"/>
+      <path d="M283 279 L308 279 L315 232 L285 232Z" fill="#62b7ee"/>
+      <circle cx="226" cy="185" r="13" fill="#d8f0ff"/>
+      <circle cx="275" cy="170" r="12" fill="#d8f0ff"/>
+      <circle cx="318" cy="198" r="10" fill="#d8f0ff"/>
+    </svg>
+  </div>
+
+  <div class="bg-dino three">
+    <svg viewBox="0 0 520 330" xmlns="http://www.w3.org/2000/svg">
+      <path d="M105 210 C60 200,40 174,42 150 C76 168,102 166,128 150 Z" fill="#6bbef2"/>
+      <ellipse cx="260" cy="205" rx="145" ry="82" fill="#8fd0ff"/>
+      <path d="M355 155 C395 112,441 104,467 130 C493 158,478 201,430 202 C391 203,366 180,355 155Z" fill="#8fd0ff"/>
+      <circle cx="440" cy="145" r="7" fill="#173b5d"/>
+      <path d="M173 279 L197 279 L208 232 L178 232Z" fill="#62b7ee"/>
+      <path d="M283 279 L308 279 L315 232 L285 232Z" fill="#62b7ee"/>
+      <circle cx="226" cy="185" r="13" fill="#d8f0ff"/>
+      <circle cx="275" cy="170" r="12" fill="#d8f0ff"/>
+    </svg>
+  </div>
+
+  <div class="bg-dino four">
+    <svg viewBox="0 0 520 330" xmlns="http://www.w3.org/2000/svg">
+      <path d="M105 210 C60 200,40 174,42 150 C76 168,102 166,128 150 Z" fill="#6bbef2"/>
+      <ellipse cx="260" cy="205" rx="145" ry="82" fill="#8fd0ff"/>
+      <path d="M355 155 C395 112,441 104,467 130 C493 158,478 201,430 202 C391 203,366 180,355 155Z" fill="#8fd0ff"/>
+      <circle cx="440" cy="145" r="7" fill="#173b5d"/>
+      <path d="M173 279 L197 279 L208 232 L178 232Z" fill="#62b7ee"/>
+      <path d="M283 279 L308 279 L315 232 L285 232Z" fill="#62b7ee"/>
+      <circle cx="226" cy="185" r="13" fill="#d8f0ff"/>
+      <circle cx="275" cy="170" r="12" fill="#d8f0ff"/>
+    </svg>
+  </div>
+</div>
+<div class="bg-footprints" aria-hidden="true"></div>
+
 
 <!--
 =========================================================
