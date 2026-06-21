@@ -1,427 +1,933 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Shower de Evan Ariel</title>
 
-<title>Baby Shower Evan Ariel</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --azul-fondo:#eaf7ff;
+  --azul-fondo-2:#d8f0ff;
+  --azul-pastel:#a7d8ff;
+  --azul-medio:#69b6ee;
+  --azul-fuerte:#2f79bd;
+  --azul-texto:#244b72;
+  --azul-profundo:#173b5d;
+  --blanco:#ffffff;
+  --dorado:#e8c66a;
+  --sombra:0 18px 45px rgba(47,121,189,.18);
+}
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-font-family:'Fredoka',sans-serif;
-background:#f7f4ea;
-overflow-x:hidden;
-color:#333;
+  font-family:'Quicksand',sans-serif;
+  background:var(--azul-fondo);
+  color:var(--azul-texto);
+  overflow-x:hidden;
 }
 
-.hero{
-min-height:100vh;
-background:linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,.75)),
-url("https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920");
-background-size:cover;
-background-position:center;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:30px;
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(255,255,255,.85), transparent 24%),
+    radial-gradient(circle at 90% 20%, rgba(167,216,255,.55), transparent 20%),
+    radial-gradient(circle at 20% 90%, rgba(216,240,255,.7), transparent 25%);
+  z-index:-3;
 }
 
-.hero-content{
-max-width:1000px;
+a{
+  color:inherit;
 }
 
-.hero h1{
-font-size:5rem;
-color:#4d7c3f;
-margin-bottom:15px;
+/* PANTALLA DE APERTURA */
+.opening{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,.9), transparent 38%),
+    linear-gradient(180deg,#cfeeff,#f4fbff);
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:24px;
+  transition:.7s ease;
 }
 
-.hero h2{
-font-size:2rem;
-color:#7ea35c;
-margin-bottom:25px;
+.opening.hide{
+  opacity:0;
+  visibility:hidden;
 }
 
-.hero p{
-font-size:1.3rem;
-line-height:1.8;
+.opening-card{
+  width:min(92vw,520px);
+  background:rgba(255,255,255,.84);
+  border:2px solid rgba(105,182,238,.45);
+  border-radius:34px;
+  padding:34px 22px;
+  box-shadow:var(--sombra);
+  backdrop-filter:blur(8px);
 }
 
-.dinos{
-font-size:4rem;
-margin:25px 0;
-animation:flotar 3s infinite ease-in-out;
+.opening-card h2{
+  font-family:'Fredoka',sans-serif;
+  font-size:36px;
+  color:var(--azul-fuerte);
+  margin:10px 0;
 }
 
-@keyframes flotar{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-12px);}
+.opening-card p{
+  line-height:1.7;
+  font-size:17px;
 }
 
+.open-btn,
 .btn{
-display:inline-block;
-margin-top:30px;
-background:#6ea54c;
-color:white;
-padding:18px 35px;
-border-radius:50px;
-text-decoration:none;
-font-size:1.1rem;
-font-weight:bold;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:22px;
+  padding:15px 24px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#8fd0ff,#3f91d0);
+  color:white;
+  text-decoration:none;
+  border:none;
+  box-shadow:0 12px 26px rgba(47,121,189,.28);
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+  transition:.25s ease;
 }
 
+.open-btn:hover,
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 32px rgba(47,121,189,.36);
+}
+
+/* DECORACIONES */
+.cloud{
+  position:absolute;
+  width:120px;
+  height:42px;
+  background:rgba(255,255,255,.88);
+  border-radius:80px;
+  box-shadow:0 8px 20px rgba(47,121,189,.08);
+  z-index:0;
+}
+
+.cloud::before,
+.cloud::after{
+  content:"";
+  position:absolute;
+  background:rgba(255,255,255,.88);
+  border-radius:50%;
+}
+
+.cloud::before{
+  width:52px;
+  height:52px;
+  left:18px;
+  top:-25px;
+}
+
+.cloud::after{
+  width:64px;
+  height:64px;
+  right:18px;
+  top:-34px;
+}
+
+.cloud.one{
+  top:10%;
+  left:6%;
+  animation:float 5s ease-in-out infinite;
+}
+
+.cloud.two{
+  top:18%;
+  right:7%;
+  transform:scale(.75);
+  animation:float 7s ease-in-out infinite;
+}
+
+.cloud.three{
+  bottom:12%;
+  left:12%;
+  transform:scale(.55);
+  animation:float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-14px);}
+}
+
+@keyframes softMove{
+  0%,100%{transform:translateY(0) rotate(-1deg);}
+  50%{transform:translateY(-12px) rotate(1deg);}
+}
+
+.dino-svg{
+  width:min(78vw,330px);
+  height:auto;
+  filter:drop-shadow(0 18px 26px rgba(47,121,189,.16));
+}
+
+.dino-mini{
+  width:110px;
+  margin:0 auto 12px;
+  display:block;
+}
+
+.footprints{
+  color:rgba(47,121,189,.24);
+  font-size:26px;
+  letter-spacing:12px;
+  margin:16px auto;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  padding:34px 20px 70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255,255,255,.96), transparent 22%),
+    radial-gradient(circle at 88% 18%, rgba(167,216,255,.75), transparent 24%),
+    linear-gradient(180deg,#d4f0ff 0%,#f8fdff 100%);
+}
+
+.hero::before{
+  content:"🦕 🦖 🥚 🦕 🦖 🥚 🦕 🦖";
+  position:absolute;
+  top:22px;
+  left:-20px;
+  width:130%;
+  font-size:38px;
+  opacity:.18;
+  letter-spacing:18px;
+  white-space:nowrap;
+  animation:marquee 18s linear infinite;
+}
+
+@keyframes marquee{
+  from{transform:translateX(0);}
+  to{transform:translateX(-160px);}
+}
+
+.hero-card{
+  position:relative;
+  z-index:2;
+  width:min(94vw,760px);
+  background:rgba(255,255,255,.76);
+  border:2px solid rgba(105,182,238,.42);
+  border-radius:38px;
+  padding:34px 22px 38px;
+  box-shadow:var(--sombra);
+  backdrop-filter:blur(10px);
+}
+
+.hero-dino-wrap{
+  animation:softMove 4s ease-in-out infinite;
+}
+
+.kicker{
+  display:inline-block;
+  margin-top:10px;
+  padding:9px 16px;
+  border-radius:999px;
+  background:#ffffff;
+  border:1px solid rgba(105,182,238,.55);
+  color:var(--azul-fuerte);
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+h1{
+  font-family:'Fredoka',sans-serif;
+  color:var(--azul-profundo);
+  font-size:clamp(40px,9vw,74px);
+  line-height:.95;
+  margin:16px 0 8px;
+}
+
+.baby-name{
+  font-family:'Fredoka',sans-serif;
+  font-size:clamp(46px,12vw,96px);
+  color:var(--azul-fuerte);
+  line-height:.95;
+  text-shadow:3px 4px 0 rgba(191,232,255,.9);
+  margin:10px 0 18px;
+}
+
+.frase{
+  max-width:650px;
+  margin:0 auto;
+  font-size:19px;
+  line-height:1.8;
+  color:#3f6687;
+}
+
+.date-pill{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 22px;
+  border-radius:22px;
+  background:#ffffff;
+  border:2px dashed var(--azul-medio);
+  color:var(--azul-fuerte);
+  font-weight:900;
+  font-size:20px;
+}
+
+.no-hour{
+  margin-top:10px;
+  font-size:14px;
+  color:#5c7fa0;
+}
+
+/* SECCIONES */
 section{
-padding:90px 10%;
-text-align:center;
+  position:relative;
+  text-align:center;
+  padding:78px 20px;
+  overflow:hidden;
 }
 
-.titulo{
-font-size:3.5rem;
-color:#4d7c3f;
-margin-bottom:30px;
+section:nth-of-type(even){
+  background:#f7fcff;
 }
 
-.texto{
-font-size:1.2rem;
-line-height:2;
-max-width:900px;
-margin:auto;
+.section-card{
+  width:min(92vw,980px);
+  margin:0 auto;
+  background:rgba(255,255,255,.68);
+  border:1px solid rgba(105,182,238,.26);
+  border-radius:34px;
+  padding:34px 20px;
+  box-shadow:0 14px 38px rgba(47,121,189,.10);
 }
 
-.padres{
-margin-top:40px;
-font-size:1.5rem;
-line-height:2;
-font-weight:600;
+.decor{
+  font-size:40px;
+  margin-bottom:14px;
 }
 
+.title{
+  font-family:'Fredoka',sans-serif;
+  font-size:clamp(30px,7vw,52px);
+  color:var(--azul-profundo);
+  margin-bottom:16px;
+}
+
+.text{
+  max-width:820px;
+  margin:0 auto;
+  font-size:19px;
+  line-height:1.9;
+  color:#3a6388;
+}
+
+.parents{
+  margin-top:26px;
+  font-family:'Fredoka',sans-serif;
+  color:var(--azul-fuerte);
+  font-size:clamp(26px,7vw,42px);
+  line-height:1.15;
+}
+
+.heart{
+  color:#69b6ee;
+  font-size:34px;
+  margin:10px 0;
+}
+
+/* CUENTA REGRESIVA */
+.count-card{
+  max-width:460px;
+  margin:28px auto 0;
+  background:linear-gradient(180deg,#ffffff,#ecf8ff);
+  border:3px solid var(--azul-pastel);
+  border-radius:34px;
+  padding:32px 20px;
+  box-shadow:var(--sombra);
+}
+
+.count-number{
+  font-family:'Fredoka',sans-serif;
+  font-size:clamp(72px,19vw,122px);
+  color:var(--azul-fuerte);
+  line-height:.9;
+}
+
+.count-label{
+  margin-top:10px;
+  font-size:24px;
+  color:var(--azul-profundo);
+  font-weight:900;
+}
+
+.count-note{
+  margin-top:12px;
+  color:#5d7d9d;
+  font-size:16px;
+}
+
+/* GALERIAS */
 .gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-margin-top:50px;
+  width:min(94vw,1060px);
+  margin:34px auto 0;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
 }
 
 .gallery img{
-width:100%;
-height:450px;
-object-fit:cover;
-border-radius:25px;
-box-shadow:0 10px 25px rgba(0,0,0,.15);
-transition:.4s;
+  width:100%;
+  height:390px;
+  object-fit:cover;
+  border-radius:28px;
+  border:7px solid rgba(255,255,255,.95);
+  box-shadow:0 18px 38px rgba(47,121,189,.20);
+  background:#d8f0ff;
+  transition:.3s ease;
 }
 
 .gallery img:hover{
-transform:scale(1.03);
+  transform:translateY(-5px) scale(1.01);
 }
 
-.decoracion{
-font-size:4rem;
-margin:30px 0;
+.gallery.ecos img{
+  object-fit:contain;
+  background:#ffffff;
+  padding:8px;
 }
 
-footer{
-background:#e9f3df;
-padding:80px 20px;
-text-align:center;
+.add-note{
+  width:min(92vw,780px);
+  margin:24px auto 0;
+  padding:16px;
+  border-radius:22px;
+  background:rgba(255,255,255,.65);
+  border:1px dashed rgba(47,121,189,.35);
+  color:#4b7193;
+  font-size:15px;
 }
 
-footer h2{
-font-size:3rem;
-color:#4d7c3f;
-margin-bottom:20px;
+/* BOTONES */
+.actions{
+  width:min(92vw,760px);
+  margin:32px auto 0;
+  display:grid;
+  gap:16px;
 }
 
-footer p{
-max-width:800px;
-margin:auto;
-font-size:1.2rem;
-line-height:2;
+.action-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:58px;
+  padding:17px 20px;
+  border-radius:22px;
+  color:white;
+  text-decoration:none;
+  font-weight:900;
+  font-size:17px;
+  background:linear-gradient(135deg,#86cbff,#2f79bd);
+  box-shadow:0 14px 26px rgba(47,121,189,.25);
+  transition:.25s ease;
 }
 
-.music{
-position:fixed;
-bottom:20px;
-right:20px;
-z-index:999;
+.action-btn:hover{
+  transform:translateY(-3px);
 }
 
-.music a{
-background:white;
-padding:15px 25px;
-border-radius:50px;
-text-decoration:none;
-box-shadow:0 5px 15px rgba(0,0,0,.2);
-color:#333;
-font-weight:bold;
+.action-btn.gift{
+  background:linear-gradient(135deg,#a7d8ff,#5aa9e8);
 }
 
-@media(max-width:768px){
-
-.hero h1{
-font-size:3rem;
+.action-btn.whatsapp{
+  background:linear-gradient(135deg,#84d7ff,#36a8e8);
 }
 
-.hero h2{
-font-size:1.5rem;
+.map-label{
+  margin-top:10px;
+  color:#5b7b99;
+  font-size:14px;
 }
 
-.titulo{
-font-size:2.3rem;
+/* MUSICA */
+.music-floating{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  z-index:1000;
+  display:flex;
+  gap:8px;
+  align-items:center;
 }
 
-.gallery img{
-height:320px;
+.music-floating button{
+  border:none;
+  border-radius:999px;
+  padding:12px 16px;
+  background:#ffffff;
+  color:var(--azul-fuerte);
+  box-shadow:0 10px 24px rgba(47,121,189,.22);
+  font-weight:900;
+  cursor:pointer;
 }
 
+/* FINAL */
+.final{
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,.9), transparent 30%),
+    linear-gradient(180deg,#e6f6ff,#cfeeff);
 }
 
+.final .section-card{
+  background:rgba(255,255,255,.78);
+}
+
+.final-names{
+  font-family:'Fredoka',sans-serif;
+  font-size:clamp(26px,7vw,44px);
+  color:var(--azul-fuerte);
+  line-height:1.2;
+  margin-top:18px;
+}
+
+.small-help{
+  margin-top:26px;
+  padding:16px;
+  border-radius:20px;
+  background:rgba(255,255,255,.62);
+  color:#527794;
+  font-size:14px;
+  text-align:left;
+  max-width:760px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.7;
+}
+
+@media(max-width:640px){
+  .hero{
+    padding-top:22px;
+  }
+
+  .hero-card{
+    border-radius:28px;
+    padding:26px 16px 30px;
+  }
+
+  .dino-svg{
+    width:245px;
+  }
+
+  .frase{
+    font-size:17px;
+  }
+
+  section{
+    padding:58px 16px;
+  }
+
+  .section-card{
+    border-radius:28px;
+    padding:26px 16px;
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .gallery img{
+    height:auto;
+    max-height:520px;
+  }
+
+  .gallery.ecos img{
+    height:auto;
+    max-height:470px;
+  }
+
+  .music-floating{
+    right:10px;
+    bottom:10px;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<section class="hero">
+<!--
+=========================================================
+INVITACIÓN BABY SHOWER EVAN ARIEL
+Para cambiar datos rápido usa Ctrl + F y busca:
+CAMBIAR MAPA AQUÍ
+CAMBIAR FECHA AQUÍ
+CAMBIAR CANCIÓN AQUÍ
+AGREGAR FOTOS MAMÁ
+AGREGAR FOTOS PAPÁ Y MAMÁ
+AGREGAR ECOGRAFÍAS
+=========================================================
+-->
 
-<div class="hero-content">
-
-<div class="dinos">
-🦕 🌿 🥚 🦖
+<!-- PANTALLA DE APERTURA / AQUÍ INICIA LA MÚSICA DESPUÉS DEL PRIMER TOQUE -->
+<div class="opening" id="opening">
+  <div class="opening-card">
+    <div style="font-size:52px;">🦕💙🥚</div>
+    <h2>Baby Shower de Evan Ariel</h2>
+    <p>Toca para abrir la invitación y comenzar esta dulce aventura.</p>
+    <button class="open-btn" onclick="abrirInvitacion()">Abrir invitación</button>
+    <p style="font-size:13px;margin-top:14px;color:#5f7f9b;">
+      La música comenzará al tocar el botón si ya subiste <strong>cancion.mp3</strong>.
+    </p>
+  </div>
 </div>
 
-<h1>Baby Shower</h1>
+<!-- AUDIO / CAMBIAR CANCIÓN AQUÍ: sube tu archivo a GitHub con el nombre cancion.mp3 -->
+<audio id="musica" loop preload="auto">
+  <source src="cancion.mp3" type="audio/mpeg">
+</audio>
 
-<h2>Evan Ariel</h2>
-
-<p>
-"Hay aventuras que comienzan con una pequeña huella y crecen hasta convertirse en algo extraordinario."
-</p>
-
-<a href="#info" class="btn">
-Abrir Invitación
-</a>
-
+<!-- BOTÓN FLOTANTE PARA ACTIVAR / PAUSAR MÚSICA -->
+<div class="music-floating">
+  <button onclick="toggleMusic()" id="musicBtn">🎵 Música</button>
 </div>
 
+<header class="hero" id="inicio">
+  <div class="cloud one"></div>
+  <div class="cloud two"></div>
+  <div class="cloud three"></div>
+
+  <div class="hero-card">
+    <div class="hero-dino-wrap">
+      <!-- Dinosaurio azul hecho en SVG dentro del mismo código -->
+      <svg class="dino-svg" viewBox="0 0 520 330" xmlns="http://www.w3.org/2000/svg" aria-label="Dinosaurio bebé azul">
+        <path d="M105 210 C60 200,40 174,42 150 C76 168,102 166,128 150 Z" fill="#7cc8f6"/>
+        <ellipse cx="260" cy="205" rx="145" ry="82" fill="#8fd0ff"/>
+        <path d="M355 155 C395 112,441 104,467 130 C493 158,478 201,430 202 C391 203,366 180,355 155Z" fill="#8fd0ff"/>
+        <circle cx="440" cy="145" r="7" fill="#173b5d"/>
+        <circle cx="455" cy="161" r="11" fill="#bfe8ff"/>
+        <path d="M382 168 C397 184,421 190,447 184" stroke="#173b5d" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M188 132 C195 92,229 75,257 103 C274 120,272 153,254 173" fill="#8fd0ff"/>
+        <circle cx="245" cy="105" r="6" fill="#173b5d"/>
+        <path d="M212 109 C223 119,238 121,252 115" stroke="#173b5d" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M173 279 L197 279 L208 232 L178 232Z" fill="#62b7ee"/>
+        <path d="M283 279 L308 279 L315 232 L285 232Z" fill="#62b7ee"/>
+        <ellipse cx="206" cy="280" rx="24" ry="8" fill="#5aa9e8"/>
+        <ellipse cx="315" cy="280" rx="24" ry="8" fill="#5aa9e8"/>
+        <circle cx="226" cy="185" r="13" fill="#d8f0ff"/>
+        <circle cx="275" cy="170" r="12" fill="#d8f0ff"/>
+        <circle cx="318" cy="198" r="10" fill="#d8f0ff"/>
+        <path d="M178 141 L196 105 L215 144Z" fill="#5aa9e8"/>
+        <path d="M231 128 L249 90 L268 133Z" fill="#5aa9e8"/>
+        <path d="M284 136 L303 98 L323 145Z" fill="#5aa9e8"/>
+        <ellipse cx="382" cy="276" rx="92" ry="15" fill="rgba(47,121,189,.12)"/>
+      </svg>
+    </div>
+
+    <span class="kicker">Una dulce aventura está por comenzar</span>
+    <h1>Baby Shower</h1>
+    <div class="baby-name">Evan Ariel</div>
+
+    <p class="frase">
+      Un pequeño rugido está por cambiar nuestras vidas para siempre...
+      <br>
+      Con inmensa alegría esperamos la llegada de nuestro pequeño.
+    </p>
+
+    <!-- CAMBIAR FECHA AQUÍ: fecha visible -->
+    <div class="date-pill">01 de Agosto de 2026</div>
+    <div class="no-hour">Sin horario publicado</div>
+
+    <br>
+    <a href="#bienvenida" class="btn">Ver invitación 🦕</a>
+  </div>
+</header>
+
+<section id="bienvenida">
+  <div class="section-card">
+    <div class="decor">☁️🦕💙🦖☁️</div>
+    <h2 class="title">Bienvenido, Evan Ariel</h2>
+    <p class="text">
+      Con inmensa felicidad queremos compartir contigo este momento tan especial.
+      La llegada de Evan Ariel llena nuestros corazones de amor, ilusión y una nueva aventura familiar.
+    </p>
+
+    <div class="parents">
+      Miriam Nohemi
+      <div class="heart">♡</div>
+      Jorge Alberto
+    </div>
+  </div>
+</section>
+
+<section id="cuenta">
+  <div class="section-card">
+    <svg class="dino-mini" viewBox="0 0 520 330" xmlns="http://www.w3.org/2000/svg" aria-label="Dinosaurio azul pequeño">
+      <ellipse cx="260" cy="205" rx="145" ry="82" fill="#8fd0ff"/>
+      <path d="M105 210 C60 200,40 174,42 150 C76 168,102 166,128 150 Z" fill="#7cc8f6"/>
+      <path d="M355 155 C395 112,441 104,467 130 C493 158,478 201,430 202 C391 203,366 180,355 155Z" fill="#8fd0ff"/>
+      <circle cx="440" cy="145" r="7" fill="#173b5d"/>
+      <circle cx="226" cy="185" r="13" fill="#d8f0ff"/>
+      <circle cx="275" cy="170" r="12" fill="#d8f0ff"/>
+      <circle cx="318" cy="198" r="10" fill="#d8f0ff"/>
+    </svg>
+    <h2 class="title">Faltan</h2>
+
+    <div class="count-card">
+      <div class="count-number" id="diasRestantes">0</div>
+      <div class="count-label">días</div>
+      <div class="count-note">para el Baby Shower de Evan Ariel</div>
+    </div>
+
+    <p class="text" style="margin-top:24px;">
+      📅 <strong>01 de Agosto de 2026</strong>
+    </p>
+  </div>
+</section>
+
+<section id="papas">
+  <div class="section-card">
+    <div class="decor">👩‍❤️‍👨💙🦕</div>
+    <h2 class="title">Mamá y Papá</h2>
+    <p class="text">
+      Evan Ariel ya es parte de nuestros sueños, nuestras sonrisas
+      y de esta historia que estamos escribiendo con todo el corazón.
+    </p>
+
+    <!-- AGREGAR FOTOS PAPÁ Y MAMÁ AQUÍ:
+    Cuando tengas fotos de Miriam y Jorge juntos, súbelas a GitHub con nombres como:
+    pareja1.jpg, pareja2.jpg, pareja3.jpg
+    Luego quita los comentarios y agrega líneas así:
+    <div class="gallery">
+      <img src="pareja1.jpg" alt="Miriam y Jorge">
+      <img src="pareja2.jpg" alt="Miriam y Jorge">
+    </div>
+    -->
+
+    <div class="add-note">
+      Para agregar fotos de mamá y papá después: sube una imagen llamada <strong>pareja1.jpg</strong>
+      y agrega la línea <strong>&lt;img src="pareja1.jpg"&gt;</strong> dentro de una galería.
+    </div>
+  </div>
+</section>
+
+<section id="mama">
+  <div class="section-card">
+    <div class="decor">🤰🏻☁️🦕💙</div>
+    <h2 class="title">Nuestra dulce espera</h2>
+    <p class="text">
+      Cada día nos acerca más al momento de conocerte.
+      Mientras llega ese día, celebramos con amor esta hermosa etapa.
+    </p>
+
+    <div class="gallery">
+      <img src="miriam1.jpg" alt="Dulce espera de Evan Ariel" loading="lazy">
+      <img src="miriam2.jpg" alt="Dulce espera de Evan Ariel" loading="lazy">
+
+      <!-- AGREGAR FOTOS MAMÁ AQUÍ:
+      Si subes más fotos a GitHub, por ejemplo foto3.jpg o miriam3.jpg,
+      agrega una línea como esta:
+      <img src="miriam3.jpg" alt="Dulce espera de Evan Ariel" loading="lazy">
+      -->
+    </div>
+  </div>
+</section>
+
+<section id="ecos">
+  <div class="section-card">
+    <div class="decor">🩵🥚👶🏻🦕</div>
+    <h2 class="title">Conociendo a Evan Ariel</h2>
+    <p class="text">
+      Aunque aún no podemos abrazarte, ya ocupas el lugar más importante en nuestras vidas.
+      Te esperamos con todo nuestro amor, pequeño Evan Ariel.
+    </p>
+
+    <div class="gallery ecos">
+      <img src="eco1.jpg" alt="Ecografía de Evan Ariel" loading="lazy">
+      <img src="eco2.jpg" alt="Ecografía de Evan Ariel" loading="lazy">
+
+      <!-- AGREGAR ECOGRAFÍAS AQUÍ:
+      Si subes más ecografías a GitHub, por ejemplo eco3.jpg,
+      agrega una línea como esta:
+      <img src="eco3.jpg" alt="Ecografía de Evan Ariel" loading="lazy">
+      -->
+    </div>
+  </div>
 </section>
 
 <section id="info">
+  <div class="section-card">
+    <div class="decor">📍📲🎁🦕</div>
+    <h2 class="title">Información del evento</h2>
+    <p class="text">
+      Será un honor contar contigo para celebrar la llegada de nuestro pequeño Evan Ariel.
+    </p>
 
-<div class="decoracion">
-🦕 🌿 🦖
-</div>
+    <div class="actions">
+      <!-- CAMBIAR MAPA AQUÍ:
+      Cuando tengas el lugar definitivo, reemplaza SOLO el link de href por el nuevo link de Google Maps.
+      -->
+      <a class="action-btn" href="https://maps.app.goo.gl/JGSVGnVTxHzjDJk29" target="_blank" rel="noopener">
+        📍 Cómo llegar
+      </a>
 
-<h2 class="titulo">
-Nuestro Pequeño Dinosaurio Está en Camino
-</h2>
+      <a class="action-btn whatsapp" href="https://wa.me/525529050429?text=Hola%20confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Evan%20Ariel%20%F0%9F%A6%95%F0%9F%92%99" target="_blank" rel="noopener">
+        📲 Confirmar por WhatsApp
+      </a>
 
-<div class="texto">
+      <a class="action-btn gift" href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52025896" target="_blank" rel="noopener">
+        🎁 Mesa de Regalos Liverpool
+      </a>
+    </div>
 
-Con inmensa felicidad esperamos la llegada de nuestro pequeño
-<strong>Evan Ariel</strong>.
-
-Queremos compartir contigo este momento tan especial y celebrar juntos la alegría de su próxima llegada.
-
-</div>
-
-<div class="padres">
-
-Miriam Nohemi Trinidad Rendón
-
-<br><br>
-
-&
-
-<br><br>
-
-Jorge Alberto Soto Rangel
-
-</div>
-
+    <p class="map-label">
+      La ubicación es temporal y podrá actualizarse cuando se confirme el lugar definitivo.
+    </p>
+  </div>
 </section>
 
-<section>
+<section class="final" id="final">
+  <div class="section-card">
+    <div class="decor">🦕💙🥚☁️🦖</div>
+    <h2 class="title">Gracias por acompañarnos</h2>
+    <p class="text">
+      Tu presencia hará aún más especial este día.
+      <br><br>
+      Gracias por compartir con nosotros la dulce espera de nuestro pequeño Evan Ariel.
+      Esperamos verte para celebrar juntos este momento tan importante para nuestra familia.
+    </p>
 
-<div class="decoracion">
-🥚 🌿 🦕 🌿 🥚
-</div>
+    <div class="final-names">
+      Miriam Nohemi
+      <br>
+      <span style="font-size:32px;">&</span>
+      <br>
+      Jorge Alberto
+    </div>
 
-<h2 class="titulo">
-Nuestra Dulce Espera
-</h2>
-
-<div class="gallery">
-
-<img src="miriam1.jpg">
-<img src="miriam2.jpg">
-<img src="eco1.jpg">
-<img src="eco2.jpg">
-
-</div>
-
+    <div class="footprints">🦴 🐾 🦴 🐾 🦴</div>
+  </div>
 </section>
 
-<section>
+<script>
+/*
+=========================================================
+CONFIGURACIÓN RÁPIDA
+=========================================================
+*/
 
-<div class="decoracion">
-🦖 🦕 🌴 🦖 🦕
-</div>
+// CAMBIAR FECHA AQUÍ
+// Formato: año, mes-1, día. Agosto es mes 7 porque enero es 0.
+const FECHA_EVENTO = new Date(2026, 7, 1);
 
-<h2 class="titulo">
-Evan Ariel
-</h2>
+// Cuenta regresiva SOLO EN DÍAS
+function actualizarDias(){
+  const hoy = new Date();
+  hoy.setHours(0,0,0,0);
 
-<p class="texto">
+  const evento = new Date(FECHA_EVENTO);
+  evento.setHours(0,0,0,0);
 
-Muy pronto llegará para llenar nuestros días de amor,
-aventuras y momentos inolvidables.
+  const diferencia = evento - hoy;
+  const dias = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
 
-</p>
+  const diasElemento = document.getElementById("diasRestantes");
 
-</section>
+  if(diasElemento){
+    if(dias > 0){
+      diasElemento.textContent = dias;
+    }else if(dias === 0){
+      diasElemento.textContent = "Hoy";
+      document.querySelector(".count-label").textContent = "es el gran día";
+    }else{
+      diasElemento.textContent = "0";
+      document.querySelector(".count-label").textContent = "días";
+    }
+  }
+}
 
-<footer>
+actualizarDias();
 
-<h2>
-Gracias por acompañarnos
-</h2>
+// Música
+const musica = document.getElementById("musica");
+const musicBtn = document.getElementById("musicBtn");
 
-<p>
+function intentarReproducirMusica(){
+  if(!musica) return;
 
-Tu presencia hará aún más especial este día.
+  const playPromise = musica.play();
 
-<br><br>
+  if(playPromise !== undefined){
+    playPromise.then(() => {
+      if(musicBtn) musicBtn.textContent = "⏸ Música";
+    }).catch(() => {
+      if(musicBtn) musicBtn.textContent = "🎵 Música";
+    });
+  }
+}
 
-Gracias por compartir con nosotros la dulce espera de Evan Ariel.
+function abrirInvitacion(){
+  const opening = document.getElementById("opening");
+  if(opening){
+    opening.classList.add("hide");
+  }
 
-<br><br>
+  intentarReproducirMusica();
+  setTimeout(() => {
+    const inicio = document.getElementById("inicio");
+    if(inicio) inicio.scrollIntoView({behavior:"smooth"});
+  }, 250);
+}
 
-Con cariño
+function toggleMusic(){
+  if(!musica) return;
 
-<br><br>
+  if(musica.paused){
+    intentarReproducirMusica();
+  }else{
+    musica.pause();
+    if(musicBtn) musicBtn.textContent = "🎵 Música";
+  }
+}
 
-<strong>
-Miriam Nohemi Trinidad Rendón
-<br>
-Jorge Alberto Soto Rangel
-</strong>
-
-</p>
-  
-<section>
-
-<h2>📍 Ubicación</h2>
-
-<a class="btn"
-href="https://maps.app.goo.gl/MpjE6jE5v3NpXkea7"
-target="_blank">
-
-📍 Cómo llegar
-
-</a>
-
-</section>
-
-<section>
-
-<h2>📲 Confirmar Asistencia</h2>
-
-<a class="btn"
-href="https://wa.me/525529050429?text=Hola%20confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Evan%20Ariel"
-
-target="_blank">
-
-📲 Confirmar por WhatsApp
-
-</a>
-
-</section>
-
-<section>
-
-<h2>🎁 Mesa de Regalos</h2>
-
-<a class="btn"
-href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52025896"
-target="_blank">
-
-🎁 Ver Mesa de Regalos
-
-</a>
-
-</section>
-
-
-</footer>
-
-<div class="music">
-
-<a href="https://www.youtube.com/results?search_query=desde+que+te+tengo+carin+leon" target="_blank">
-🎵 Nuestra Canción
-</a>
-
-</div>
-```html
-<section style="padding:80px 20px;text-align:center;">
-
-<div style="font-size:50px;">🦕💙🌿</div>
-
-<h2 style="color:#4d7a3c;font-size:42px;margin-top:20px;">
-Gracias por acompañarnos
-</h2>
-
-<p style="max-width:800px;margin:auto;font-size:22px;line-height:1.8;">
-
-Tu presencia hará aún más especial este día.
-
-<br><br>
-
-Gracias por compartir con nosotros la dulce espera
-de nuestro pequeño Evan Ariel.
-
-<br><br>
-
-Esperamos verte para celebrar juntos este momento
-tan importante para nuestra familia.
-
-</p>
-
-<br><br>
-
-<p style="font-size:24px;">
-Con cariño
-</p>
-
-<br>
-
-<p style="font-size:28px;font-weight:bold;">
-
-Miriam Nohemi Trinidad Rendón
-
-<br><br>
-
-Jorge Alberto Soto Rangel
-
-</p>
-
-<div style="font-size:50px;margin-top:30px;">
-🦕🦴🥚🌿
-</div>
-
-</section>
-```
+// Intenta activar música en el primer toque del usuario
+document.addEventListener("click", function(){
+  if(musica && musica.paused){
+    // Solo intenta si ya quitaron la pantalla inicial o tocaron el botón flotante
+  }
+}, {once:true});
+</script>
 
 </body>
 </html>
-```
