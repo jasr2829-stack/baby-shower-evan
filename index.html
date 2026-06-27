@@ -697,6 +697,41 @@ section:nth-of-type(even){
   .bg-footprints{opacity:.10;}
 }
 
+  .count-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.count-item{
+  background:#ffffff;
+  border:2px solid #a7d8ff;
+  border-radius:22px;
+  padding:16px 8px;
+  box-shadow:0 10px 24px rgba(47,121,189,.12);
+}
+
+.count-item span{
+  display:block;
+  font-family:'Fredoka',sans-serif;
+  font-size:38px;
+  color:#2f79bd;
+  font-weight:900;
+  line-height:1;
+}
+
+.count-item p{
+  margin-top:8px;
+  font-size:14px;
+  color:#173b5d;
+  font-weight:800;
+}
+
+@media(max-width:640px){
+  .count-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
 </style>
 </head>
 
@@ -849,8 +884,8 @@ AGREGAR ECOGRAFÍAS
     </p>
 
     <!-- CAMBIAR FECHA AQUÍ: fecha visible -->
-    <div class="date-pill">01 de Agosto de 2026</div>
-    <div class="no-hour">Sin horario publicado</div>
+    <div class="date-pill">01 de Agosto de 2026 • 12:00 PM
+    </div> <div class="no-hour">Te esperamos para celebrar juntos la llegada de Evan Ariel</div>
 
     <br>
     <a href="#bienvenida" class="btn">Ver invitación 🦕</a>
@@ -887,11 +922,35 @@ AGREGAR ECOGRAFÍAS
     </svg>
     <h2 class="title">Faltan</h2>
 
-    <div class="count-card">
-      <div class="count-number" id="diasRestantes">0</div>
-      <div class="count-label">días</div>
-      <div class="count-note">para el Baby Shower de Evan Ariel</div>
+<div class="count-card">
+
+  <div class="count-grid">
+
+    <div class="count-item">
+      <span id="diasRestantes">0</span>
+      <p>Días</p>
     </div>
+
+    <div class="count-item">
+      <span id="horasRestantes">0</span>
+      <p>Horas</p>
+    </div>
+
+    <div class="count-item">
+      <span id="minutosRestantes">0</span>
+      <p>Minutos</p>
+    </div>
+
+    <div class="count-item">
+      <span id="segundosRestantes">0</span>
+      <p>Segundos</p>
+    </div>
+
+  </div>
+
+  <div class="count-note">para el Baby Shower de Evan Ariel</div>
+
+</div>
 
     <p class="text" style="margin-top:24px;">
       📅 <strong>01 de Agosto de 2026</strong>
@@ -972,7 +1031,7 @@ AGREGAR ECOGRAFÍAS
       <!-- CAMBIAR MAPA AQUÍ:
       Cuando tengas el lugar definitivo, reemplaza SOLO el link de href por el nuevo link de Google Maps.
       -->
-      <a class="action-btn" href="https://maps.app.goo.gl/JGSVGnVTxHzjDJk29" target="_blank" rel="noopener">
+      <a class="action-btn" href="https://maps.app.goo.gl/14gJ6M4BXdpozp1M9" target="_blank" rel="noopener">
         📍 Cómo llegar
       </a>
 
@@ -1023,35 +1082,34 @@ CONFIGURACIÓN RÁPIDA
 
 // CAMBIAR FECHA AQUÍ
 // Formato: año, mes-1, día. Agosto es mes 7 porque enero es 0.
-const FECHA_EVENTO = new Date(2026, 7, 1);
+const FECHA_EVENTO = new Date(2026, 7, 1, 12, 0, 0);
 
-// Cuenta regresiva SOLO EN DÍAS
-function actualizarDias(){
-  const hoy = new Date();
-  hoy.setHours(0,0,0,0);
+function actualizarCuentaRegresiva(){
+  const ahora = new Date().getTime();
+  const evento = FECHA_EVENTO.getTime();
+  const diferencia = evento - ahora;
 
-  const evento = new Date(FECHA_EVENTO);
-  evento.setHours(0,0,0,0);
-
-  const diferencia = evento - hoy;
-  const dias = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
-
-  const diasElemento = document.getElementById("diasRestantes");
-
-  if(diasElemento){
-    if(dias > 0){
-      diasElemento.textContent = dias;
-    }else if(dias === 0){
-      diasElemento.textContent = "Hoy";
-      document.querySelector(".count-label").textContent = "es el gran día";
-    }else{
-      diasElemento.textContent = "0";
-      document.querySelector(".count-label").textContent = "días";
-    }
+  if(diferencia <= 0){
+    document.getElementById("diasRestantes").textContent = "0";
+    document.getElementById("horasRestantes").textContent = "0";
+    document.getElementById("minutosRestantes").textContent = "0";
+    document.getElementById("segundosRestantes").textContent = "0";
+    return;
   }
+
+  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+  const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+  document.getElementById("diasRestantes").textContent = dias;
+  document.getElementById("horasRestantes").textContent = horas;
+  document.getElementById("minutosRestantes").textContent = minutos;
+  document.getElementById("segundosRestantes").textContent = segundos;
 }
 
-actualizarDias();
+actualizarCuentaRegresiva();
+setInterval(actualizarCuentaRegresiva, 1000);
 
 // Música
 const musica = document.getElementById("musica");
